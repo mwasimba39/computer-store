@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ mobileMenuOpen: false, currentCategory: 'all' }" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechGear - Premium Computer Accessories</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Top Bar -->
+  <div class="bg-gray-900 text-white py-2">
+    <div class="container mx-auto px-4 flex justify-between items-center text-sm">
+      <div class="flex items-center space-x-4">
+        <a href="#" class="hover:text-indigo-300 flex items-center">
+          <i class="fas fa-phone mr-1 text-indigo-400"></i> +255 723 456 789
+        </a>
+        <a href="#" class="hover:text-indigo-300 flex items-center">
+          <i class="fas fa-envelope mr-1 text-indigo-400"></i> info@techgear.co.tz
+        </a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="#" class="hover:text-indigo-300 flex items-center">
+          <i class="fas fa-truck mr-1"></i> Track Order
+        </a>
+        <a href="#" class="hover:text-indigo-300 flex items-center">
+          <i class="fas fa-user mr-1"></i> My Account
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="bg-indigo-800 text-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <i class="fas fa-microchip text-2xl text-indigo-200"></i>
+        <span class="text-xl font-bold">TechGear</span>
+      </div>
+      <div class="hidden lg:flex gap-8">
+        <a href="#" class="hover:text-indigo-200 transition">Home</a>
+        <div class="relative group" x-data="{ open: false }">
+          <button @click="open = !open" class="flex items-center hover:text-indigo-200 transition">
+            Shop <i class="fas fa-chevron-down ml-1 text-xs"></i>
+          </button>
+          <div x-show="open" @click.away="open = false" class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50">
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-100">Keyboards</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-100">Mice</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-100">Headphones</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-100">Webcams</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-100">Monitors</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-100">Accessories</a>
+          </div>
+        </div>
+        <a href="#" class="hover:text-indigo-200 transition">New Arrivals</a>
+        <a href="#" class="hover:text-indigo-200 transition">Deals</a>
+        <a href="#" class="hover:text-indigo-200 transition">About</a>
+        <a href="#" class="hover:text-indigo-200 transition">Contact</a>
+      </div>
+      <div class="flex gap-4 items-center">
+        <div class="hidden md:block relative">
+          <input type="text" placeholder="Search products..." class="px-4 py-2 text-gray-800 rounded-full text-sm w-64">
+          <button class="absolute right-0 top-0 h-full px-4 text-gray-500">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <a href="#" class="hover:text-indigo-200 relative">
+          <i class="fas fa-shopping-cart text-xl"></i>
+          <span class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">3</span>
+        </a>
+        <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden">
+          <i class="fas fa-bars text-xl hover:text-indigo-200"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div x-show="mobileMenuOpen" class="lg:hidden bg-indigo-900 px-4 py-3">
+      <a href="#" class="block py-2 hover:text-indigo-200">Home</a>
+      <div x-data="{ submenuOpen: false }">
+        <button @click="submenuOpen = !submenuOpen" class="flex items-center w-full py-2 hover:text-indigo-200">
+          Shop <i class="fas fa-chevron-down ml-1 text-xs" :class="{'transform rotate-180': submenuOpen}"></i>
+        </button>
+        <div x-show="submenuOpen" class="pl-4 border-l border-indigo-700">
+          <a href="#" class="block py-2 hover:text-indigo-200">Keyboards</a>
+          <a href="#" class="block py-2 hover:text-indigo-200">Mice</a>
+          <a href="#" class="block py-2 hover:text-indigo-200">Headphones</a>
+          <a href="#" class="block py-2 hover:text-indigo-200">Webcams</a>
+          <a href="#" class="block py-2 hover:text-indigo-200">Monitors</a>
+          <a href="#" class="block py-2 hover:text-indigo-200">Accessories</a>
+        </div>
+      </div>
+      <a href="#" class="block py-2 hover:text-indigo-200">New Arrivals</a>
+      <a href="#" class="block py-2 hover:text-indigo-200">Deals</a>
+      <a href="#" class="block py-2 hover:text-indigo-200">About</a>
+      <a href="#" class="block py-2 hover:text-indigo-200">Contact</a>
+      <div class="relative mt-3">
+        <input type="text" placeholder="Search products..." class="px-4 py-2 text-gray-800 rounded-full text-sm w-full">
+        <button class="absolute right-0 top-0 h-full px-4 text-gray-500">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-indigo-900 to-purple-700 text-white py-24 text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">Premium Computer Accessories</h1>
+      <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto">Elevate your tech experience with professional-grade gear designed for performance</p>
+      <div class="flex justify-center gap-4">
+        <button class="bg-white text-indigo-800 px-8 py-3 rounded-full font-semibold hover:bg-indigo-100 transition shadow-lg">Shop Now</button>
+        <button class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-800 transition">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Navigation -->
+  <section class="container mx-auto px-4 py-10">
+    <div class="flex overflow-x-auto pb-2 gap-2 md:gap-4 md:justify-center">
+      <button 
+        @click="currentCategory = 'all'" 
+        :class="{'bg-indigo-600 text-white': currentCategory === 'all', 'bg-gray-200 text-gray-800 hover:bg-gray-300': currentCategory !== 'all'}" 
+        class="px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition">
+        All Products
+      </button>
+      <button 
+        @click="currentCategory = 'keyboards'" 
+        :class="{'bg-indigo-600 text-white': currentCategory === 'keyboards', 'bg-gray-200 text-gray-800 hover:bg-gray-300': currentCategory !== 'keyboards'}" 
+        class="px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition">
+        Keyboards
+      </button>
+      <button 
+        @click="currentCategory = 'mice'" 
+        :class="{'bg-indigo-600 text-white': currentCategory === 'mice', 'bg-gray-200 text-gray-800 hover:bg-gray-300': currentCategory !== 'mice'}" 
+        class="px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition">
+        Mice
+      </button>
+      <button 
+        @click="currentCategory = 'headphones'" 
+        :class="{'bg-indigo-600 text-white': currentCategory === 'headphones', 'bg-gray-200 text-gray-800 hover:bg-gray-300': currentCategory !== 'headphones'}" 
+        class="px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition">
+        Headphones
+      </button>
+      <button 
+        @click="currentCategory = 'webcams'" 
+        :class="{'bg-indigo-600 text-white': currentCategory === 'webcams', 'bg-gray-200 text-gray-800 hover:bg-gray-300': currentCategory !== 'webcams'}" 
+        class="px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition">
+        Webcams
+      </button>
+      <button 
+        @click="currentCategory = 'monitors'" 
+        :class="{'bg-indigo-600 text-white': currentCategory === 'monitors', 'bg-gray-200 text-gray-800 hover:bg-gray-300': currentCategory !== 'monitors'}" 
+        class="px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition">
+        Monitors
+      </button>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="container mx-auto px-4 py-10">
+    <div class="flex justify-between items-center mb-12">
+      <h2 class="text-3xl font-bold">Featured Products</h2>
+      <a href="#" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+        View all <i class="fas fa-arrow-right ml-2"></i>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Product 1 -->
+      <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition group">
+        <div class="overflow-hidden rounded-t-2xl bg-gray-100">
+          <img src="/api/placeholder/500/300" alt="Mechanical Keyboard" class="w-full h-56 object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-lg font-bold">Mechanical Keyboard Pro</h3>
+            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-full font-medium">New</span>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">RGB backlit with premium tactile switches</p>
+          <div class="flex justify-between items-center">
+            <span class="text-xl font-semibold">TSh 225,000</span>
+            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition flex items-center">
+              <i class="fas fa-shopping-cart mr-2"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition group">
+        <div class="overflow-hidden rounded-t-2xl bg-gray-100">
+          <img src="/api/placeholder/500/300" alt="Gaming Mouse" class="w-full h-56 object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-lg font-bold">Precision Gaming Mouse</h3>
+            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Popular</span>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">18000 DPI, 10 programmable buttons</p>
+          <div class="flex justify-between items-center">
+            <span class="text-xl font-semibold">TSh 165,000</span>
+            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition flex items-center">
+              <i class="fas fa-shopping-cart mr-2"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition group">
+        <div class="overflow-hidden rounded-t-2xl bg-gray-100">
+          <img src="/api/placeholder/500/300" alt="Noise Cancelling Headphones" class="w-full h-56 object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-lg font-bold">Noise Cancelling Headphones</h3>
+            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full font-medium">Sale</span>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">Bluetooth 5.2, 40hr battery life</p>
+          <div class="flex justify-between items-center">
+            <div>
+              <span class="text-xl font-semibold">TSh 325,000</span>
+              <span class="text-sm text-gray-500 line-through ml-2">TSh 399,000</span>
+            </div>
+            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition flex items-center">
+              <i class="fas fa-shopping-cart mr-2"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition group">
+        <div class="overflow-hidden rounded-t-2xl bg-gray-100">
+          <img src="/api/placeholder/500/300" alt="4K Webcam" class="w-full h-56 object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-lg font-bold">4K Ultra HD Webcam</h3>
+            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">Best Seller</span>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">With ring light & dual microphones</p>
+          <div class="flex justify-between items-center">
+            <span class="text-xl font-semibold">TSh 199,000</span>
+            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition flex items-center">
+              <i class="fas fa-shopping-cart mr-2"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Banner -->
+  <section class="bg-gray-100 py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="bg-white p-8 rounded-xl shadow">
+          <div class="bg-indigo-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-truck text-2xl text-indigo-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Free Shipping</h3>
+          <p class="text-gray-600">On all orders over TSh 150,000</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow">
+          <div class="bg-indigo-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-shield-alt text-2xl text-indigo-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">2-Year Warranty</h3>
+          <p class="text-gray-600">On all our products</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow">
+          <div class="bg-indigo-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-headset text-2xl text-indigo-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">24/7 Support</h3>
+          <p class="text-gray-600">Dedicated customer service</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="container mx-auto px-4 py-20">
+    <div class="bg-gradient-to-r from-indigo-800 to-purple-700 rounded-2xl p-8 md:p-12 text-white text-center">
+      <h2 class="text-3xl font-bold mb-4">Join Our Newsletter</h2>
+      <p class="mb-8 max-w-lg mx-auto">Get exclusive deals, new product announcements, and tech tips delivered to your inbox</p>
+      <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+        <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg text-gray-800">
+        <button class="bg-white text-indigo-800 font-semibold px-6 py-3 rounded-lg hover:bg-indigo-100 transition">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <i class="fas fa-microchip text-2xl text-indigo-400"></i>
+            <span class="text-xl font-bold">TechGear</span>
+          </div>
+          <p class="text-gray-400 mb-6">Premium computer accessories for professionals, gamers, and tech enthusiasts in Tanzania.</p>
+          <div class="flex gap-4">
+            <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-4">Shop</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-white transition">All Products</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">New Arrivals</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Best Sellers</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Featured</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Discounts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-4">Support</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">FAQs</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Shipping Policy</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Returns & Exchanges</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-4">Contact</h4>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3">
+              <i class="fas fa-map-marker-alt text-indigo-400"></i>
+              <span class="text-gray-400">123 Nyerere Road<br>Dar es Salaam, Tanzania</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-phone text-indigo-400"></i>
+              <span class="text-gray-400">+255 123 456 789</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-envelope text-indigo-400"></i>
+              <span class="text-gray-400">info@techgear.co.tz</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+        <p>Payment methods: MPESA, TigoPesa, Airtel Money, Bank Transfer</p>
+        <p class="mt-4">&copy; 2025 TechGear. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
