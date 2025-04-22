@@ -1,6 +1,8 @@
 project:
-  name: computer-store
+  name: techgear-store
   build:
     method: static
     publish: /
   deploy:
+    domains:
+      - techgear.yourdomain.com  # Optional custom domain
