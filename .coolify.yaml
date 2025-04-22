@@ -1,0 +1,6 @@
+project:
+  name: computer-store
+  build:
+    method: static
+    publish: /
+  deploy:
